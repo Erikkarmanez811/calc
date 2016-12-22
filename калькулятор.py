@@ -33,10 +33,12 @@ def lex(AS):
 
 
 def prior(oper):
-    if (oper == '+') or (oper == '-'):
+    if oper == '+':
         a = 2
-    elif (oper == '*') or (oper == '/'):
+    elif oper == '-':
         a = 3
+    elif (oper == '*') or (oper == '/'):
+        a = 4
     elif (oper == '(') or (oper == ')'):
         a = 1
     else:
