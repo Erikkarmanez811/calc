@@ -1,6 +1,6 @@
 def lex(AS):
     """
-    Функция которая лексер 
+    Lexer function 
     """
     token = []
     tokens = []
