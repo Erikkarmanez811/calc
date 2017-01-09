@@ -33,50 +33,46 @@ def lex(AS):
 
 
 def prior(oper):
-    if oper == '+':
-        a = 2
-    elif oper == '-':
-        a = 3
-    elif (oper == '*') or (oper == '/'):
-        a = 4
-    elif (oper == '(') or (oper == ')'):
-        a = 1
-    else:
-        print('error')
-    return(a)
+    opers = '()+-*/'
+    if oper in opers:
+        return opers.index(oper)
+    print('Error')
+    return 'Sad'
     
+
+def rpn(exp):
+    rpn = []
+    stack = []
+    
+    for token in exp:
+        if type(token) == int:
+            rpn.append(token)
         
 
 
-while True:
-    string = str(input())
-    stack = []
-    opz = []
-    operations = ['+' , '-'  , '(' , ')' , '*']
-    string = lex(string)
-    print(string)
-    string.append('^')
-    op1 = ''
-    op2 = ''
-    opp1 = 0
-    opp2 = 0
-    for token in string:
-        if type(token) == int:
-            opz.append(token)
-        if token in operations:
-
-
+    if token in brackets:
+            if token == '(':
+                stack.append(token)
+            if token == ')':
+                sap = stack.pop()
+                while sap != '(':
+                    rpn.append(sap)
+                    sap = stack.pop()
             
-
+    if token in operations:
             if stack == []:
                 stack.append(token)
             else:
                 op1 = token
-                op2 = stack[-1]
-                if prior(op1) > prior(op2):
-                    stack.append(token)
+                op2 = stack.pop()
 
-                       
+
+                while prior(op2) >= prior(op1):
+                    rpn.append(op2)
+                    op2 = stack.pop()
+
+
+                    
                 if prior(op1) <= prior(op2):
                     while prior(op2) >= prior(op1):
                         op2 = stack.pop()
@@ -89,15 +85,10 @@ while True:
                                 stack.append(token)
                                 break
 
-                            
-        if (token == '(') or (token == ')'):
-            if token == '(':
                 stack.append(token)
-            if token == ')':
-                sap = stack.pop()
-                while prior(sap) != 1:
-                    opz.append(sap)
-                    sap = stack.pop
+
+                            
+
                     
                         
                         
@@ -108,7 +99,25 @@ while True:
                 opz.append(qwe)
             while '(' in opz:
                 opz.remove('(')
-            print (opz)
+            print (opz)    
+
+
+        
+operations = ['+' , '-'  , '*' , '/' ]
+brackets = ['(',')']
+
+print(prior('*'))
+while True:
+    exp = str(input())
+    
+    exp_l = lex(exp)
+    print(exp_l)
+    exp_l.append('^')
+    op1 = ''
+    op2 = ''
+    opp1 = 0
+    opp2 = 0
+   
             
         
     
