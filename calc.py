@@ -33,7 +33,7 @@ def lex(AS):
 
 
 def prior(oper):
-    opers = '+-*/()'
+    opers = '()+-*/'
     if oper in opers:
         return opers.index(oper)
     print('Error')
