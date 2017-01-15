@@ -33,7 +33,7 @@ def lex(AS):
 
 
 def prior(oper):
-    opers = '+-*/()'
+    opers = '()+-*/'
     if oper in opers:
         return opers.index(oper)
     print('Error')
@@ -66,16 +66,16 @@ def rpn(exp):
                 
                 op2 = stack.pop()
 
-                while prior(op2) <= prior(token):
+                while prior(op2) >= prior(token):
                     rpn.append(op2)
                     if len(stack):
                         op2 = stack.pop()
                     else:
-                            break
+                        break
 
 
                     
-                if prior(op2) > prior(token):
+                if prior(op2) < prior(token):
                     stack.append(op2)
 
                 stack.append(token)
@@ -102,7 +102,7 @@ def evaluate(rpn_exp):
 
 
         
-operations = ['+' , '-'  , '*' , '/' ]
+operations = ['+' , '-' , '*' , '/' ]
 brackets = ['(',')']
 
 while True:
@@ -113,103 +113,3 @@ while True:
     rpn_exp = rpn(exp_l)
 
     print(evaluate(rpn_exp), 'result')
-   
-            
-        
-    
-    
-        
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
-                
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
-                
-
-        
-                             
-            
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
