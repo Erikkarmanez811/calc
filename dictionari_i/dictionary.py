@@ -1,3 +1,4 @@
+import merge_sort
 def lex(aR):
     ar = list(aR)
     words = []
@@ -19,8 +20,10 @@ while True:
     cho = input()
     if cho == 'a':
         word = input() + ' '
-        word_t = input() + ' '
+        word_t = input() + ','
         words_r = (open('words.txt','r')).read()
+        words_eng = 
+        words_ru = 
         Words = open('words.txt','w')
         Words.write(words_r)
         Words.write(word)
